@@ -1,5 +1,9 @@
 # Change Log
 
+
+## 1.1.2
+
+- feat: update @appworks/doctor to support custom config set extends and plugins.
 ## 1.1.1
 
 - fix: empty project show wrong CodeMod notice.

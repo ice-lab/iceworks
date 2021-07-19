@@ -1,5 +1,12 @@
 # Change Log
 
+## 1.0.7
+
+- feat: add import auxiliary
+- feat: add code snippets that provide for ICE/RAX project
+- feat: support React Component propTypes auto complete
+- feat: auto fill content when store.[t|j]s & models/xx.[t|j].s files create
+
 ## 1.0.6
 
 - fix: command `Find Components In Current File` not working.

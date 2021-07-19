@@ -1,0 +1,32 @@
+{
+  "lazy import": {
+    "prefix": "lazy",
+    "body": "const ${2:componentName} = lazy(() => import('${1:component}'));"
+  },
+  "lazy import with chunkName": {
+    "prefix": "lazy",
+    "body": "const ${3:componentName} = lazy(() => import(/* webpackChunkName: '${2:chunkName}' */ '${1:component}'));"
+  },
+  "useRequest": {
+    "prefix": "useRequest",
+    "body": "const { data, error, loading, request } = useRequest(${1:service});"
+  },
+  "mtop.request": {
+    "prefix": "mtop.request",
+    "body": [
+      "Mtop.request({",
+      "\tapi: '${1:api}',",
+      "\tv: '${2:version}',",
+      "\tdata: ${3:data},",
+      "}).then(",
+      "\t(value) => { ${4}}",
+      ").catch(",
+      "\t(error) => { ${5}}",
+      ");"
+    ]
+  },
+  "mtop.config": {
+    "prefix": "mtop.config",
+    "body": "Mtop.config('${1:configKey}', '${2:configValue}')"
+  }
+}

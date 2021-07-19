@@ -13,6 +13,7 @@ import { registerDebugCommand } from './utils/debugMaterials';
 import { createComponentsTreeView } from './views/componentsView';
 import { createPagesTreeView } from './views/pagesView';
 import mtopAutoComplete from './mtopAutoComplete';
+import propTypesAutoComplete from './propTypesAutoComplete';
 
 const { window, ViewColumn } = vscode;
 
@@ -121,10 +122,13 @@ export function activate(context: vscode.ExtensionContext) {
   mtopAutoComplete();
   registerComponentDocSupport();
   autoFillContent();
-  
+
   // views
   createComponentsTreeView(context);
   createPagesTreeView(context);
+
+  // help user complete React Component's propTypes; 
+  propTypesAutoComplete();
 }
 
 export function deactivate() { }

@@ -3,7 +3,7 @@
   "displayName": "Doctor",
   "description": "A free security and quality audit tool for modern DevOps teams",
   "publisher": "iceworks-team",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "engines": {
     "vscode": "^1.41.0"
   },
@@ -82,7 +82,7 @@
     "@appworks/common-service": "^0.1.0",
     "@appworks/connector": "^0.1.0",
     "@appworks/constant": "^0.1.0",
-    "@appworks/doctor": "^0.2.0",
+    "@appworks/doctor": "^0.2.1",
     "@appworks/project-service": "^0.1.0",
     "@appworks/recorder": "^0.1.0",
     "@appworks/storage": "^0.1.0",

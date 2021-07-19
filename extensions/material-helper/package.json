@@ -3,7 +3,7 @@
   "displayName": "Component Helper",
   "description": "Easily use Component in React/Vue/Rax.",
   "publisher": "iceworks-team",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "main": "./build/extension.js",
   "engines": {
     "vscode": "^1.41.0"
@@ -19,7 +19,8 @@
     "JSX",
     "Component",
     "Props",
-    "appworks"
+    "appworks",
+    "snippets"
   ],
   "icon": "assets/logo.png",
   "activationEvents": [
@@ -335,7 +336,25 @@
           "description": "%iceworksMaterialHelper.configuration.properties.appworks.generateComponentPath.description%"
         }
       }
-    }
+    },
+    "snippets": [
+      {
+        "language": "javascript",
+        "path": "./snippets/snippets.json"
+      },
+      {
+        "language": "typescript",
+        "path": "./snippets/snippets.json"
+      },
+      {
+        "language": "javascriptreact",
+        "path": "./snippets/snippets.json"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./snippets/snippets.json"
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "rm -rf build && npm run build:web && npm run build:extension",

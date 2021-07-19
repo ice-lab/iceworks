@@ -7,6 +7,7 @@ import * as upperFirst from 'lodash.upperfirst';
 import * as camelCase from 'lodash.camelcase';
 import { getProjectLanguageType, getProjectType } from '@appworks/project-utils';
 import { getDataFromSettingJson } from '@appworks/common-service';
+import autoFillInStore from './autoFillInStore';
 
 const renderFileAsync = util.promisify(ejs.renderFile);
 const writeFileAsync = util.promisify(fs.writeFile);
@@ -95,6 +96,7 @@ export default function () {
           }
         }
       }
+      await autoFillInStore(file);
     }));
   });
 

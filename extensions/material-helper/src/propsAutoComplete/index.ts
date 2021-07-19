@@ -30,7 +30,7 @@ async function provideCompletionItems(document, position): Promise<vscode.Comple
 
     definitions.forEach((definition: any) => {
       const componentPath = (definition.targetUri || definition.uri).path;
-      items = items.concat(getPropKeyCompletionItems(componentPath, currentJsxElementTagName));
+      items = items.concat(getPropKeyCompletionItems(componentPath));
     });
   }
   if (items.length) {

@@ -43,7 +43,9 @@ export default function getEslintReports(directory: string, files: IFileInfo[], 
   const cliEngine = new CLIEngine({
     cache: false,
     baseConfig: deepmerge(getESLintConfig(ruleKey), customConfig),
-    cwd: path.dirname(require.resolve('@iceworks/spec')),
+    cwd: directory,
+    // If user add extends or plugins, should find plugin form target directory
+    resolvePluginsRelativeTo: customConfig.extends || customConfig.plugins ? directory : path.dirname(require.resolve('@iceworks/spec')),
     fix: !!fixErr,
     useEslintrc: false,
   });

@@ -1,7 +1,7 @@
 {
   "name": "@appworks/doctor",
   "description": "Analyse and running codemods over react/rax projects, troubleshooting and automatically fixing errors",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "keywords": [
     "doctor",
     "analysis",
