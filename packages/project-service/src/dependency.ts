@@ -1,15 +1,14 @@
 import { getProjectFramework } from '@appworks/project-utils';
 import { getPackageLocalVersion } from 'ice-npm-utils';
-import latestVersion from 'latest-version';
 // import * as fsExtra from 'fs-extra';
 // import * as path from 'path';
 import { getDataFromSettingJson } from '@appworks/common-service';
-import packageJSON from 'package-json';
+import packageJSON, { AbbreviatedMetadata } from 'package-json';
 import { projectPath } from './constant';
 import { getProjectPackageJSON } from './utils';
 
 export async function getCoreDependencies() {
-  const framwork = await getProjectFramework(projectPath);
+  const framework = await getProjectFramework(projectPath);
   const iceCoreDeps = [
     'react', 'ice.js',
   ];
@@ -17,9 +16,9 @@ export async function getCoreDependencies() {
     'rax', 'rax-app',
   ];
   let coreDeps = [];
-  if (framwork === 'rax-app') {
+  if (framework === 'rax-app') {
     coreDeps = raxCoreDeps;
-  } else if (framwork === 'icejs') {
+  } else if (framework === 'icejs') {
     coreDeps = iceCoreDeps;
   }
   async function checkIsCore(packageName) {
@@ -134,9 +133,16 @@ function getLocalDependencyVersion(moduleName: string): string {
   }
 }
 
+interface PackageJSON extends AbbreviatedMetadata {
+  version: string;
+}
+
 async function getNpmOutdated(moduleName: string, version: string, semver: string) {
   try {
-    const latest = await latestVersion(moduleName, { version: semver });
+    const { version: latest } = await packageJSON(
+      moduleName,
+      { version: semver, registryUrl: getDataFromSettingJson('npmRegistry') },
+    ) as PackageJSON;
     return version !== latest ? latest : '';
   } catch (err) {
     return '';

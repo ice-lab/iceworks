@@ -1,8 +1,13 @@
 import * as vscode from 'vscode';
 import * as fsExtra from 'fs-extra';
 import { downloadAndGenerateProject } from '@iceworks/generate-project';
-import { checkPathExists, getDataFromSettingJson, CONFIGURATION_KEY_NPM_REGISTRY } from '@appworks/common-service';
-import { checkIsTargetProjectType as orginCheckIsTargetProjectType, checkIsTargetProjectFramework as orginCheckIsTargetProjectFramework, getProjectType as originGetProjectType, getProjectFramework as originGetProjectFramework } from '@appworks/project-utils';
+import { checkPathExists, getDataFromSettingJson, CONFIGURATION_KEY_NPM_REGISTRY, checkIsAliInternal } from '@appworks/common-service';
+import {
+  checkIsTargetProjectType as originCheckIsTargetProjectType,
+  checkIsTargetProjectFramework as originCheckIsTargetProjectFramework,
+  getProjectType as originGetProjectType,
+  getProjectFramework as originGetProjectFramework,
+} from '@appworks/project-utils';
 import * as simpleGit from 'simple-git/promise';
 import { Recorder } from '@appworks/recorder';
 import * as path from 'path';
@@ -37,11 +42,11 @@ export async function autoSetContext() {
 }
 
 export async function checkIsTargetProjectType() {
-  return await orginCheckIsTargetProjectType(projectPath);
+  return await originCheckIsTargetProjectType(projectPath);
 }
 
 export async function checkIsTargetProjectFramework() {
-  return await orginCheckIsTargetProjectFramework(projectPath);
+  return await originCheckIsTargetProjectFramework(projectPath);
 }
 
 export async function getFeedbackLink() {
@@ -96,6 +101,10 @@ export async function getProjectGitInfo() {
 }
 
 export async function getProjectDefInfo(clientToken: string) {
+  const isAliInternal = await checkIsAliInternal();
+  if (!isAliInternal) {
+    return { isDef: false };
+  }
   const { group, project } = await getProjectGitInfo();
   const info = await getBasicInfo(`${group}/${project}`, clientToken);
   return {

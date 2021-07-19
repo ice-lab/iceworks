@@ -14,9 +14,11 @@ export default {
   effects: () => ({
     async refresh() {
       this.setState({ inited: true });
-      const basic = await callService('project', 'getProjectBaseInfo');
-      const git = await callService('project', 'getProjectGitInfo');
-      const def = await callService('project', 'getProjectDefInfo', CLIENT_TOKEN);
+      const [basic, git, def] = await Promise.all([
+        await callService('project', 'getProjectBaseInfo'),
+        await callService('project', 'getProjectGitInfo'),
+        await callService('project', 'getProjectDefInfo', CLIENT_TOKEN),
+      ]);
       this.setState({
         basic,
         git,

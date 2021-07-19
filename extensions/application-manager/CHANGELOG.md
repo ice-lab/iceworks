@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.0.3
+
+- fix: can not get project info in dashboard when in external
+
 ## 1.0.2
 
 - feat: add loading status when reinstalling dependencies

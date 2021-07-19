@@ -1,6 +1,6 @@
 {
   "name": "@appworks/project-service",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "AppWorks project service for VSCode extension.",
   "files": [
     "lib"
@@ -15,7 +15,6 @@
     "@appworks/recorder": "^0.1.0",
     "@appworks/i18n": "^0.1.0",
     "@appworks/constant": "^0.1.0",
-    "latest-version": "^5.1.0",
     "package-json": "^6.5.0",
     "ice-npm-utils": "^2.0.0",
     "axios": "^0.19.2",
@@ -23,7 +22,6 @@
     "simple-git": "^2.5.0"
   },
   "devDependencies": {
-    "@types/latest-version": "^4.0.1",
     "@types/vscode": "^1.45.0"
   },
   "publishConfig": {
