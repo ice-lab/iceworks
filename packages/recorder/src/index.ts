@@ -4,17 +4,17 @@ import configure, { recordKey } from '@appworks/configure';
 // eslint-disable-next-line
 const checkIsElectron = require('is-electron');
 
-interface ILogParam {
+export interface ILogParam {
   module: string;
   action: string;
   data?: any;
 }
 
-interface IGoldlogParam extends ILogParam {
+export interface IGoldlogParam extends ILogParam {
   namespace: string;
 }
 
-type RecordType = 'PV' | 'UV';
+export type RecordType = 'PV' | 'UV';
 
 let vscodeEnv;
 let isAlibaba: boolean;
